@@ -1,0 +1,31 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Sorvete{
+  id Int @id @default(autoincrement())
+  nome String @unique
+  preco Float
+  lucro Float
+}
+
+model FuncSorvete{
+  id Int @id @default(autoincrement())
+  idSorvete Int 
+  idFunc Int 
+  vendido Boolean @default(false)
+}
+
+model Funcionario{
+  idFunc Int @id @default(autoincrement())
+  cpf String @unique
+  nome String
+  email String @unique
+  telefone String @unique
+}
+
